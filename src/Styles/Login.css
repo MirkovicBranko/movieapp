@@ -15,11 +15,15 @@ form {
 .input {
     height: 40px;
     width: 100%;
+    margin-bottom: 5px;
+    border-radius: 10px 10px 10px 10px;
+    border: 1px solid;
 }
 
 .login {
     color: #EE9B00;
     padding-bottom: 20px;
+
 }
 
 #forgot {
@@ -28,4 +32,10 @@ form {
     background-color: blue;
     height: 35px;
     text-align: start;
+}
+
+.span {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 }
