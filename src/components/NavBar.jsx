@@ -164,7 +164,7 @@ function NavBar() {
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
             ></input>
-            <CiSearch fontSize={21} color="green" id="search" />
+            <CiSearch fontSize={21} color="green"  id="search" />
             <div id="Color-switcher" onClick={() => setToggle(!toggle)}>
               <div
                 id={toggle ? "Color-switcher-mover" : "Color-switcher-moved"}
