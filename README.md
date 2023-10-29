@@ -1,70 +1,132 @@
-# Getting Started with Create React App
+# VideoSite - Movie and TV Series Streaming Web Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![VideoSite](link-to-your-logo.png)
 
-## Available Scripts
+VideoSite is a modern web application that allows users to browse, search, and watch their favorite movies and TV series. The application offers a variety of content, including the latest movies, popular series, and much more. The content is organized, and users can easily find what they are looking for.
 
-In the project directory, you can run:
+## Contents
 
-### `npm start`
+- [Getting Started](#getting-started)
+- [Technologies](#technologies)
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [How to Use](#how-to-use)
+- [Contributions](#contributions)
+- [Author](#author)
+- [License](#license)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Getting Started
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To run the VideoSite application, follow these steps:
 
-### `npm test`
+1. **Install Dependencies**: First, install all the necessary dependencies for the project. Open the terminal and run the following command:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ```bash
+   npm install
+   ```
 
-### `npm run build`
+2. **Start the Application**: After successfully installing the dependencies, you can start the application. Use the following command:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ```bash
+   npm start
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. **Access the Application**: The application will be available at [http://localhost:3000](http://localhost:3000). Open a web browser and enter this address to access VideoSite.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Technologies
 
-### `npm run eject`
+VideoSite is built using a range of modern technologies and tools, including:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- [React](https://reactjs.org/): The primary JavaScript framework for building the user interface.
+- [React Router](https://reactrouter.com/): A library for managing routes and navigation in React applications.
+- [React Toastify](https://fkhadra.github.io/react-toastify/): Components for displaying notifications (toasts) to users.
+- [Axios](https://axios-http.com/): A library for making HTTP requests to the server.
+- Other technologies used (e.g.,SCSS, CSS, HTML, Node.js, Express, etc.).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Features
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The VideoSite application offers the following key features:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **Browse Movies and TV Series**: Users can explore various movies and series based on categories and genres.
 
-## Learn More
+- **Content Search**: The application allows users to search for specific content using the search field.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Login and Registration**: Users can log in or register to access additional features.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Watch Movies and TV Series**: Registered users can watch movies and TV series directly through the application.
 
-### Code Splitting
+- **Premium Subscription**: Users can subscribe to premium accounts with additional features.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **Theme Switching**: The application allows users to switch between light and dark themes.
 
-### Analyzing the Bundle Size
+## Project Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The project is organized as follows:
 
-### Making a Progressive Web App
+```
+VideoSite/
+  ├── src/
+  │   ├── components/
+  │   │   ├── Component1.js
+  │   │   ├── Component2.js
+  │   ├── styles/
+  │   │   ├── style.css
+  │   ├── routes/
+  │   │   ├── index.js
+  │   ├── App.js
+  ├── public/
+  │   ├── index.html
+  ├── README.md
+  ├── ...
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- `src/`: Contains the code for components, styles, and routes for the application.
+- `public/`: Contains static files, such as the application's HTML foundation.
 
-### Advanced Configuration
+## How to Use
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **Browsing Content**: After launching the application, users can choose a category or search for content using the search field.
 
-### Deployment
+- **Login and Registration**: Users who want to access all the application's features need to log in or register.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- **Watching Content**: After logging in, users can watch movies and series from the selection.
 
-### `npm run build` fails to minify
+- **Theme Switching**: Users can change the application's theme according to their preferences.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contributions
+
+If you wish to contribute to the project, you can do so by following these steps:
+
+1. Create a copy of the repository on your GitHub account.
+
+2. Create a branch for your changes:
+
+   ```bash
+   git checkout -b my-feature-branch
+   ```
+
+3. Implement your changes and add them:
+
+   ```bash
+   git add .
+   ```
+
+4. Commit your changes:
+
+   ```bash
+   git commit -m "Added a new feature"
+   ```
+
+5. Then push your changes to GitHub:
+
+   ```bash
+   git push origin my-feature-branch
+   ```
+
+6. Create a pull request on the GitHub repository.
+
+Your change will be reviewed and integrated into the project if approved.
+
+## Author
+
+Made by Branko Mirkovic. FrontEnd junior developer, based in Smederevo, Serbia.
