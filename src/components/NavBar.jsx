@@ -3,7 +3,7 @@ import { CiSearch } from "react-icons/ci";
 import "../Styles/NavBarStyle.css";
 import "../Styles/Videos.css";
 import { Routes, Route, NavLink, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify"; // Dodajte ToastContainer i toast
+import { ToastContainer, toast } from "react-toastify";
 import Login from "./Login";
 import Movies from "./Movies";
 import Pricing from "./Pricing";
@@ -31,6 +31,10 @@ function NavBar() {
       setIsLoggedIn(true);
     }
   }, []);
+  const handleLogin = async (credentials) => {
+    setIsLoggedIn(true);
+    navigate("/Movies");
+  };
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -124,25 +128,33 @@ function NavBar() {
               <span id={toggle ? "Movies" : "MoviesLight"}> Pricing </span>
             </NavLink>
             {isLoggedIn ? (
-              <button onClick={handleLogout}>Logout</button>
-            ) : isRegistered ? (
               <NavLink
-                to="/Login"
+                to="/Logout"
                 style={({ isActive }) => ({
                   color: isActive ? `#fff` : `#EE9800`,
                 })}
               >
-                <span id={toggle ? "Movies" : "MoviesLight"}>Login</span>
+                <span id={toggle ? "Movies" : "MoviesLight"}>Logout</span>
               </NavLink>
             ) : (
-              <NavLink
-                to="/SignUp"
-                style={({ isActive }) => ({
-                  color: isActive ? `#fff` : `#EE9800`,
-                })}
-              >
-                <span id={toggle ? "Movies" : "MoviesLight"}>Sign up</span>
-              </NavLink>
+              <Fragment>
+                <NavLink
+                  to="/Login"
+                  style={({ isActive }) => ({
+                    color: isActive ? `#fff` : `#EE9800`,
+                  })}
+                >
+                  <span id={toggle ? "Movies" : "MoviesLight"}>Login</span>
+                </NavLink>
+                <NavLink
+                  to="/SignUp"
+                  style={({ isActive }) => ({
+                    color: isActive ? `#fff` : `#EE9800`,
+                  })}
+                >
+                  <span id={toggle ? "Movies" : "MoviesLight"}>Sign up</span>
+                </NavLink>
+              </Fragment>
             )}
           </div>
           <div className="input-group">
