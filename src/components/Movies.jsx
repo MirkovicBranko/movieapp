@@ -4,6 +4,7 @@ import { Container } from "./NavBar";
 import "../Styles/Videos.css";
 import NoImg from "./NoImage.jpg";
 import axios from "axios";
+import TrailerMovies from "../Trailers/TrailerMovies";
 
 function Movie() {
   const { toggle, inputValue } = useContext(Container);
@@ -25,9 +26,7 @@ function Movie() {
     setMovieList(results);
   };
   useEffect(() => {
-    setTimeout(() => {
-      getMovie();
-    }, 100);
+    getMovie();
   }, [input]);
   const MoviesTitle = (movie) => {
     setMovieTitle(movie.title);
@@ -63,6 +62,7 @@ function Movie() {
               </Fragment>
             );
           })}
+          {trailer ? console.log() : <TrailerMovies moviesTitle={movieTitle} toggle={toggle} />}
           <AiOutlineClose //dodaje se dugme za exit
             id={trailer ? "Nothing" : "Exit1"}
             className={toggle ? "DatkTheme" : "LightTheme"}

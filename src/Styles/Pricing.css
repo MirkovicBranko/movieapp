@@ -1,0 +1,193 @@
+.background-Color-Main {
+    width: 100vw;
+    height: 91vh;
+    background-color: #0c1e25;
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background-Color-secondary {
+    width: 100vw;
+    height: 91vh;
+    background-color: #fff;
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Pricing-container {
+    display: flex;
+    color: #fff;
+}
+
+.Pricing-option1,
+.Pricing-option2,
+.Pricing-option3 {
+    width: 30vw;
+    height: 63vh;
+    background-color: #000d13;
+    margin-right: 20px;
+    border-radius: 16px;
+}
+
+.light-Theme1,
+.light-Theme2,
+.light-Theme3 {
+    width: 30vw;
+    height: 63vh;
+    background-color: #29534e;
+    margin-right: 20px;
+    border-radius: 16px;
+}
+
+.Pricing-option1 h3,
+.Pricing-option2 h3,
+.Pricing-option3 h3 {
+    display: flex;
+    justify-content: center;
+    font-size: 2.3rem;
+    color: #EE9B00;
+}
+
+.Price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.light-Theme1 h3,
+.light-Theme2 h3,
+.light-Theme3 h3 {
+    font-size: 2.3rem;
+    display: flex;
+    justify-content: center;
+    color: #fff;
+}
+
+.Pricing-option1 h2,
+.Pricing-option2 h2,
+.Pricing-option3 h2 {
+    font-size: 3rem;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: center;
+}
+
+.light-Theme1 h2,
+.light-Theme2 h2,
+.light-Theme3 h2 {
+    color: #ff206e;
+    font-size: 3rem;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: center;
+}
+
+.Pricing-option1 span,
+.Pricing-option2 span,
+.Pricing-option3 span {
+    display: flex;
+    font-size: 1.3rem;
+    margin-left: 80px;
+    margin-bottom: 15px;
+    font-weight: 300px;
+}
+
+#MonthlyYearly {
+    font-size: 1.4rem;
+}
+
+.light-Theme1 span,
+.light-Theme2 span,
+.light-Theme3 span {
+    display: flex;
+    font-size: 1.3rem;
+    margin-left: 80px;
+    margin-bottom: 15px;
+    font-weight: 300px;
+    color: #fff;
+}
+
+#checkmark {
+    margin-right: 9px;
+}
+
+button {
+    width: 400px;
+    height: 6vh;
+    margin-left: 80px;
+    border: none;
+    border-radius: 7px;
+    background-color: #659664;
+    color: #fff;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #588157;
+    transition: .4s;
+}
+
+#button1 {
+    margin-top: 98px;
+}
+
+#button2 {
+    margin-top: 55px;
+}
+
+#button3 {
+    margin-top: 12px;
+}
+
+#darktheme {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.Pricing-yearly-darktheme {
+    position: relative;
+    margin-left: 250px;
+    width: 70px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #413E44;
+    margin-right: 10px;
+}
+
+.Pricing-monthly-darktheme {
+    position: absolute;
+    left: 5px;
+    top: 4px;
+    background-color: #fff;
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    transition: .6s;
+}
+
+.Pricing-monthly-light {
+    position: absolute;
+    background-color: #fff;
+    left: 32px;
+    top: 4px;
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    transition: .6s;
+}
+
+.email {
+    padding: 20px;
+    color: #38bdab;
+}
+
+.password {
+    padding: 20px;
+    color: #38bdab;
+}

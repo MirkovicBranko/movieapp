@@ -3,7 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../Styles/toastify.css";
 import { useNavigate } from "react-router-dom";
-
+import "../Styles/Registration.css"
 function RegistrationForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -80,30 +80,33 @@ function RegistrationForm() {
   }, []);
 
   return (
-    <div>
-      <h2>Registration</h2>
+    <div className="wrapperReg">
+      <h2 className="registration">Registration</h2>
       {/* Ovde možete prikazivati formu samo ako korisnik nije prijavljen */}
       {!isLoggedIn && (
         <form onSubmit={handleRegister}>
           <input
+            className="input"
             type="text"
             placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
           <input
+            className="input"
             type="text"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <input
+          <input 
+            className="input"
             type="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button type="submit">Register</button>
+          <button type="submit" className="button">Register</button>
         </form>
       )}
       <ToastContainer />
