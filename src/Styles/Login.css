@@ -1,0 +1,31 @@
+.wrapperLogin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 250px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input {
+    height: 40px;
+    width: 100%;
+}
+
+.login {
+    color: #EE9B00;
+    padding-bottom: 20px;
+}
+
+#forgot {
+    width: 150px;
+    font-size: 1em;
+    background-color: blue;
+    height: 35px;
+    text-align: start;
+}

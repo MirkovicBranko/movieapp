@@ -9,7 +9,7 @@ function RegistrationForm() {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Promenili smo naziv loggedIn na isLoggedIn
+  const [isLoggedIn, setIsLoggedIn] = useState(false); 
 
   const handleRegister = async (e) => {
     e.preventDefault();

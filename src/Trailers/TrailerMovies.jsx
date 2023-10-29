@@ -22,7 +22,7 @@ function TrailerMovies({ moviesTitle,toggle }) {
       <div className="Container"></div>
       <div className="player">
         <h1 id={toggle ? 'TrailerMovie-name-dark' :'TrailerMovie-name-light' }>{moviesTitle}</h1>
-        <ReactPlayer url={videoURL}controls={true}width={"1000px"}height={"700px"}muted={false}
+        <ReactPlayer url={videoURL}controls={true}width={"1000px"}height={"700px"}muted={false} 
         />
       </div>
     </Fragment>
