@@ -9,7 +9,7 @@ function TrailerTrending({ TrendTitle, toggle }) {
   const [videoURL, setVideoURL] = useState("");
 
   function handleSearch() {
-    if (TrendTitle) { // Dodajte proveru da li TrendTitle ima vrednost
+    if (TrendTitle) { 
       movieTrailer(TrendTitle)
         .then((res) => {
           if (res) {

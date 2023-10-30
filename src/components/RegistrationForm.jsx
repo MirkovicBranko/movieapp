@@ -58,18 +58,18 @@ function RegistrationForm() {
   };
 
   useEffect(() => {
-    // Ovde ćete napraviti zahtev na vaš backend server da proverite da li je korisnik ulogovan
+    // zahtev na  backend server da proverim da li je korisnik ulogovan
     async function checkLoginStatus() {
       try {
         const response = await fetch("http://localhost:5000/api/check-login", {
           method: "GET",
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`, // Šaljemo token
+            Authorization: `Bearer ${localStorage.getItem("token")}`, 
           },
         });
 
         if (response.status === 200) {
-          setIsLoggedIn(true); // Postavljamo isLoggedIn na true ako je korisnik ulogovan
+          setIsLoggedIn(true); 
         }
       } catch (error) {
         console.error("Greška prilikom provere statusa prijave:", error);
