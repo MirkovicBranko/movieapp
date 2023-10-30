@@ -6,6 +6,7 @@ import NoImg from "../components/NoImage.jpg";
 import "../Styles/Videos.css";
 import TrailerTrending from "../Trailers/TrailerTrending";
 
+
 function Trends() {
   const { toggle } = useContext(Container);
   const Api = `https://api.themoviedb.org/3/`;

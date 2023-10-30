@@ -12,33 +12,42 @@ import Trends from "./Trends";
 import TvShows from "./TvShows";
 import RegistrationForm from "./RegistrationForm";
 import Logout from "./Logout";
+import { useAuth } from "./AuthContext";
+import { AuthProvider } from "./AuthContext";
 
 export const Container = React.createContext();
 
 function NavBar() {
+  const { isLoggedIn, login, logout } = useAuth();
   const [inputValue, setInputValue] = useState("");
   const [isRegistered, setIsRegistered] = useState(false);
   const [toggle, setToggle] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
 
+  const refreshPage = () => {
+    window.location.reload();
+  };
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      setIsLoggedIn(true);
+      login();
     }
-  }, []);
-  const handleLogin = async (credentials) => {
-    setIsLoggedIn(true);
+  }, [login]);
+
+  const handleLogin = async () => {
+    login();
+    refreshPage();
     navigate("/Movies");
   };
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    setIsLoggedIn(false);
+    logout();
+    refreshPage();
     navigate("/Movies");
   };
 
@@ -89,103 +98,80 @@ function NavBar() {
   };
 
   return (
-    <Container.Provider value={{ toggle, inputValue, setInputValue }}>
-      <Fragment>
-        <ToastContainer />
-        <nav className={toggle ? "" : "navBarColor"}>
-          <div className="nav-options">
-            <h1 id={toggle ? "" : "heading"}>VIDEOSITE</h1>
-            <NavLink
-              to="/Movies"
-              style={({ isActive }) => ({
-                color: isActive ? `#fff` : `#EE9800`,
-              })}
-            >
-              <span id={toggle ? "Movies" : "MoviesLight"}> Movies </span>
-            </NavLink>
-            <NavLink
-              to="/TvShows"
-              style={({ isActive }) => ({
-                color: isActive ? `#fff` : `#EE9800`,
-              })}
-            >
-              <span id={toggle ? "Movies" : "MoviesLight"}> Tv Shows </span>
-            </NavLink>
-            <NavLink
-              to="/Trending"
-              style={({ isActive }) => ({
-                color: isActive ? `#fff` : `#EE9800`,
-              })}
-            >
-              <span id={toggle ? "Movies" : "MoviesLight"}> Trending </span>
-            </NavLink>
-            <NavLink
-              to="/Pricing"
-              style={({ isActive }) => ({
-                color: isActive ? `#fff` : `#EE9800`,
-              })}
-            >
-              <span id={toggle ? "Movies" : "MoviesLight"}> Pricing </span>
-            </NavLink>
-            {isLoggedIn ? (
-              <NavLink
-                to="/Logout"
-                style={({ isActive }) => ({
-                  color: isActive ? `#fff` : `#EE9800`,
-                })}
-              >
-                <span id={toggle ? "Movies" : "MoviesLight"}>Logout</span>
+    <AuthProvider>
+      <Container.Provider value={{ toggle, inputValue, setInputValue }}>
+        <Fragment>
+          <ToastContainer />
+          <nav className={toggle ? "" : "navBarColor"}>
+            <div className="nav-options">
+              <h1 id={toggle ? "" : "heading"}>VIDEOSITE</h1>
+              <NavLink to="/Movies" style={({ isActive }) => ({ color: isActive ? "#fff" : "#EE9800" })}>
+                <span id={toggle ? "Movies" : "MoviesLight"}> Movies </span>
               </NavLink>
-            ) : (
-              <Fragment>
-                <NavLink
-                  to="/Login"
-                  style={({ isActive }) => ({
-                    color: isActive ? `#fff` : `#EE9800`,
-                  })}
+              <NavLink to="/TvShows" style={({ isActive }) => ({ color: isActive ? "#fff" : "#EE9800" })}>
+                <span id={toggle ? "Movies" : "MoviesLight"}> Tv Shows </span>
+              </NavLink>
+              <NavLink to="/Trending" style={({ isActive }) => ({ color: isActive ? "#fff" : "#EE9800" })}>
+                <span id={toggle ? "Movies" : "MoviesLight"}> Trending </span>
+              </NavLink>
+              <NavLink to="/Pricing" style={({ isActive }) => ({ color: isActive ? "#fff" : "#EE9800" })}>
+                <span id={toggle ? "Movies" : "MoviesLight"}> Pricing </span>
+              </NavLink>
+              {isLoggedIn ? (
+                <span
+                  onClick={() => {
+                    handleLogout();
+                    navigate("/Movies");
+                  }}
+                  style={{ color: "#fff", cursor: "pointer" }}
                 >
-                  <span id={toggle ? "Movies" : "MoviesLight"}>Login</span>
-                </NavLink>
-                <NavLink
-                  to="/SignUp"
-                  style={({ isActive }) => ({
-                    color: isActive ? `#fff` : `#EE9800`,
-                  })}
-                >
-                  <span id={toggle ? "Movies" : "MoviesLight"}>Sign up</span>
-                </NavLink>
-              </Fragment>
-            )}
-          </div>
-          <div className="input-group">
-            <input
-              type="text"
-              placeholder="Search for movies or shows"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-            ></input>
-            <CiSearch fontSize={21} color="green"  id="search" />
-            <div id="Color-switcher" onClick={() => setToggle(!toggle)}>
-              <div
-                id={toggle ? "Color-switcher-mover" : "Color-switcher-moved"}
-              ></div>
+                  Logout
+                </span>
+              ) : (
+                <Fragment>
+                  <NavLink to="/Login" style={({ isActive }) => ({
+                    color: isActive ? "#fff" : "#EE9800",
+                    display: isLoggedIn ? "none" : "block"
+                  })}>
+                    <span id={toggle ? "Movies" : "MoviesLight"}>Login</span>
+                  </NavLink>
+                  <NavLink to="/SignUp" style={({ isActive }) => ({
+                    color: isActive ? "#fff" : "#EE9800",
+                    display: isLoggedIn ? "none" : "block"
+                  })}>
+                    <span style={{ display: isLoggedIn ? "none" : "block" }} id={toggle ? "Movies" : "MoviesLight"}>Sign up</span>
+                  </NavLink>
+                </Fragment>
+              )}
             </div>
-          </div>
-        </nav>
+            <div className="input-group">
+              <input
+                type="text"
+                placeholder="Search for movies or shows"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+              />
+              <CiSearch fontSize={21} color="green" id="search" />
+              <div id="Color-switcher" onClick={() => setToggle(!toggle)}>
+                <div id={toggle ? "Color-switcher-mover" : "Color-switcher-moved"}></div>
+              </div>
+            </div>
+          </nav>
 
-        <Routes>
-          <Route path="/" element={<Movies />} />
-          <Route path="/Movies" element={<Movies />} />
-          <Route path="/TvShows" element={<TvShows />} />
-          <Route path="/Trending" element={<Trends />} />
-          <Route path="/Pricing" element={<Pricing />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/SignUp" element={<SignUp />} />
-          <Route path="/RegistrationForm" element={<RegistrationForm />} />
-          {isLoggedIn && <Route path="/Logout" element={<Logout />} />}
-        </Routes>
-      </Fragment>
-    </Container.Provider>
+          <Routes>
+            <Route path="/" element={<Movies />} />
+            <Route path="/Movies" element={<Movies />} />
+            <Route path="/TvShows" element={<TvShows />} />
+            <Route path="/Trending" element={<Trends />} />
+            <Route path="/Pricing" element={<Pricing />} />
+            <Route path="/Login" element={<Login handleLogin={handleLogin} />} />
+            <Route path="/SignUp" element={<SignUp handleRegister={handleRegister} />} />
+            {isLoggedIn && <Route path="/Logout" element={<Logout handleLogout={handleLogout} />} />}
+            <Route path="/RegistrationForm" element={<RegistrationForm />} />
+          </Routes>
+        </Fragment>
+      </Container.Provider>
+    </AuthProvider>
   );
 }
 

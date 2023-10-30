@@ -3,6 +3,7 @@ import { FcCheckmark } from "react-icons/fc";
 import { Container } from "./NavBar";
 import "../Styles/Pricing.css";
 
+
 function Pricing() {
   const { toggle } = useContext(Container);
   const [toggleBasic, setToggleBasic] = useState(true);
