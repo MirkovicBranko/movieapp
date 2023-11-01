@@ -1,11 +1,23 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import "../Styles/Signup.css"
+import FramerMotion from "./FramerMotion";
 
 function SignUp() {
+
+
+
+
+  
   return (
-    <div>
-      <h2>Click on register to be able to navigate through site.</h2>
-      <NavLink to="/RegistrationForm">Register</NavLink>
+    
+    <div className="signupWrapper">
+      <h2 className="click">Click to sign up</h2>
+
+      <FramerMotion/><NavLink style={{ textDecoration: 'none' }} to="/RegistrationForm">
+  <p className="signupP">SIGN UP</p>
+</NavLink>
+      
     </div>
   );
 }

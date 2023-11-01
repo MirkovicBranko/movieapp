@@ -3,13 +3,23 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 250px;
+    padding: 2rem;
+    margin: 15rem auto;
+    width: 90%;
+    max-width: 600px;
+    background-color: rgb(0, 0, 56);
 }
 
 form {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.log {
+    color: #EE9B00;
 }
 
 .input {
@@ -21,21 +31,23 @@ form {
 }
 
 .login {
-    color: #EE9B00;
-    padding-bottom: 20px;
+    margin-right: 80px;
+    color: blue;
+
+
 
 }
 
-#forgot {
+/* #forgot {
     width: 150px;
     font-size: 1em;
     background-color: blue;
     height: 35px;
     text-align: start;
-}
-
+} */
+/* 
 .span {
     display: flex;
     flex-direction: row;
     width: 100%;
-}
+} */

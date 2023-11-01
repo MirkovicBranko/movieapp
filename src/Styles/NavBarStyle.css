@@ -124,3 +124,113 @@ span #HomeLight:hover,
     position: absolute;
     margin-left: 300px;
 }
+
+/* Responsive design for tablets */
+@media screen and (max-width: 1023px) {
+    .nav-options {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        /* Omogućava prelazak elemenata u novi red */
+    }
+
+    #heading {
+        order: 2;
+        /* Postavlja redosled na drugi */
+    }
+
+    .nav-options a {
+        order: 3;
+        /* Postavlja redosled na treći */
+    }
+
+    .input-group {
+        display: flex;
+        align-items: center;
+        order: 1;
+        /* Postavlja redosled na prvi */
+    }
+
+    #Color-switcher {
+        order: 0;
+        /* Postavlja redosled na nulu */
+    }
+}
+
+/* Responsive design for phones */
+@media (max-width: 768px) {
+    .nav-options {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .input-group {
+        order: -1;
+    }
+
+    .input-group input {
+        width: 100%;
+    }
+
+    .input-group input::placeholder {
+        font-size: 0.7em;
+    }
+
+    .input-group #search {
+        margin-left: 0;
+    }
+
+    .nav-options span {
+        margin-left: 0;
+    }
+
+    .video {
+        font-size: 1em;
+        margin-right: 50px;
+    }
+
+    #Color-switcher {
+        margin-right: 40px;
+        background-color: #413E44;
+        width: 80px;
+        height: 40px;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    #Color-switcher-mover {
+        left: 5px;
+        top: 4px;
+        background-color: #fff;
+        width: 33px;
+        height: 33px;
+        border-radius: 50%;
+        transition: .6s;
+    }
+
+    #Color-switcher-moved {
+        position: absolute;
+        background-color: #fff;
+        left: 40px;
+        top: 4px;
+        width: 33px;
+        height: 33px;
+        border-radius: 50%;
+        transition: .6s;
+        pointer-events: none;
+    }
+
+
+    #Color-switcher {
+        margin-right: 0;
+    }
+
+    #Color-switcher-mover {
+        left: 0;
+    }
+
+    #Color-switcher-moved {
+        left: 0;
+    }
+
+}

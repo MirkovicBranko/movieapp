@@ -9,6 +9,7 @@ import Movies from "./components/Movies";
 import Pricing from "./components/Pricing";
 import Trends from "./components/Trends";
 import TvShows from "./components/TvShows";
+import ContactUs from "./components/ContactUs";
 
 
 
@@ -26,6 +27,7 @@ function App() {
               <Route path="/Login" element={<Login />} />
               <Route path="/RegistrationForm" element={<RegistrationForm />} />
               <Route path="/SignUp" element={<SignUp />} />
+              <Route path="/ContactUs" element={<ContactUs />} />
             </Routes>
           </NavBar>
         </AuthProvider>

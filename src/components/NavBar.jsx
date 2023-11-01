@@ -14,6 +14,7 @@ import RegistrationForm from "./RegistrationForm";
 import Logout from "./Logout";
 import { useAuth } from "./AuthContext";
 import { AuthProvider } from "./AuthContext";
+import ContactUs from "./ContactUs";
 
 export const Container = React.createContext();
 
@@ -39,6 +40,7 @@ function NavBar() {
   }, [login]);
 
   const handleLogin = async () => {
+
     login();
     refreshPage();
     navigate("/Movies");
@@ -104,7 +106,7 @@ function NavBar() {
           <ToastContainer />
           <nav className={toggle ? "" : "navBarColor"}>
             <div className="nav-options">
-              <h1 id={toggle ? "" : "heading"}>VIDEOSITE</h1>
+              <h1 className="" id={toggle ? "" : "heading"}>VIDEOSITE</h1>
               <NavLink to="/Movies" style={({ isActive }) => ({ color: isActive ? "#fff" : "#EE9800" })}>
                 <span id={toggle ? "Movies" : "MoviesLight"}> Movies </span>
               </NavLink>
@@ -129,23 +131,27 @@ function NavBar() {
                 </span>
               ) : (
                 <Fragment>
-                  <NavLink to="/Login" style={({ isActive }) => ({
-                    color: isActive ? "#fff" : "#EE9800",
-                    display: isLoggedIn ? "none" : "block"
-                  })}>
-                    <span id={toggle ? "Movies" : "MoviesLight"}>Login</span>
-                  </NavLink>
-                  <NavLink to="/SignUp" style={({ isActive }) => ({
-                    color: isActive ? "#fff" : "#EE9800",
-                    display: isLoggedIn ? "none" : "block"
-                  })}>
-                    <span style={{ display: isLoggedIn ? "none" : "block" }} id={toggle ? "Movies" : "MoviesLight"}>Sign up</span>
-                  </NavLink>
+                 <NavLink to="/Login" style={({ isActive }) => ({
+  color: isActive ? "#fff" : "#EE9800",
+  display: isLoggedIn ? "none" : "block"
+})}>
+  <span id={toggle ? "Movies" : "MoviesLight"}>Login</span>
+</NavLink>
+                <NavLink to="/SignUp" style={({ isActive }) => ({
+  color: isActive ? "#fff" : "#EE9800",
+  display: isLoggedIn ? "none" : "block"
+})}>
+  <span style={{ display: isLoggedIn ? "none" : "block" }} id={toggle ? "Movies" : "MoviesLight"}>Sign up</span>
+</NavLink>
+<NavLink to="/ContactUs" style={({ isActive }) => ({ color: isActive ? "#fff" : "#EE9800" })}>
+  <span id={toggle ? "Movies" : "MoviesLight"}> Contact us </span>
+  </NavLink>
                 </Fragment>
               )}
             </div>
             <div className="input-group">
               <input
+                className="search-input"
                 type="text"
                 placeholder="Search for movies or shows"
                 value={inputValue}
@@ -168,6 +174,7 @@ function NavBar() {
             <Route path="/SignUp" element={<SignUp handleRegister={handleRegister} />} />
             {isLoggedIn && <Route path="/Logout" element={<Logout handleLogout={handleLogout} />} />}
             <Route path="/RegistrationForm" element={<RegistrationForm />} />
+            <Route path="/ContactUs" element={<ContactUs/>}/>
           </Routes>
         </Fragment>
       </Container.Provider>
