@@ -14,7 +14,7 @@ function SignUp() {
     <div className="signupWrapper">
       <h2 className="click">Click to sign up</h2>
 
-      <FramerMotion/><NavLink style={{ textDecoration: 'none' }} to="/RegistrationForm">
+      <NavLink style={{ textDecoration: 'none' }} to="/RegistrationForm">
   <p className="signupP">SIGN UP</p>
 </NavLink>
       
