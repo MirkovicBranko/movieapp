@@ -3,21 +3,23 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../Styles/toastify.css";
 import { useNavigate } from "react-router-dom";
-import "../Styles/Registration.css"
+import "../Styles/Registration.css";
+
+
 function RegistrationForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(false); 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleRegister = async (e) => {
     e.preventDefault();
 
     const registrationData = {
-      email: email.toLocaleLowerCase(),
-      password: password.toLocaleLowerCase(),
-      username: username.toLocaleLowerCase(),
+      email: email.toLowerCase().trim(),
+      password: password,
+      username: username.toLowerCase().trim(),
     };
 
     try {
@@ -30,8 +32,8 @@ function RegistrationForm() {
       });
 
       if (response.status === 200) {
-        // Uspešna registracija
-        toast.success("Uspešna registracija!", {
+        const data = await response.json();
+        toast.success(data.message, {
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: false,
@@ -49,7 +51,7 @@ function RegistrationForm() {
       }
     } catch (error) {
       console.error("Greška prilikom registracije:", error);
-      toast.error("Došlo je do greške prilikom registracije.", {
+      toast.error(error.message, { 
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -58,31 +60,32 @@ function RegistrationForm() {
   };
 
   useEffect(() => {
-    // zahtev na  backend server da proverim da li je korisnik ulogovan
+    // req on backend to check if user is logged in
     async function checkLoginStatus() {
+      if(isLoggedIn){
       try {
         const response = await fetch("http://localhost:5000/api/check-login", {
           method: "GET",
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`, 
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
 
         if (response.status === 200) {
-          setIsLoggedIn(true); 
+          setIsLoggedIn(true);
         }
       } catch (error) {
-        console.error("Greška prilikom provere statusa prijave:", error);
+        console.error("Error during status application check:", error);
       }
     }
-
+  }
     checkLoginStatus();
-  }, []);
+  }, [isLoggedIn]);
 
   return (
     <div className="wrapperReg">
       <h2 className="registration">Registration</h2>
-      {/* Ovde možete prikazivati formu samo ako korisnik nije prijavljen */}
+      
       {!isLoggedIn && (
         <form onSubmit={handleRegister}>
           <input
@@ -99,14 +102,16 @@ function RegistrationForm() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <input 
+          <input
             className="input"
             type="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button type="submit" className="button">Register</button>
+          <button type="submit" className="button">
+            Register
+          </button>
         </form>
       )}
       <ToastContainer />

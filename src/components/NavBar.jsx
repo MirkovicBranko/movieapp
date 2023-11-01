@@ -119,6 +119,9 @@ function NavBar() {
               <NavLink to="/Pricing" style={({ isActive }) => ({ color: isActive ? "#fff" : "#EE9800" })}>
                 <span id={toggle ? "Movies" : "MoviesLight"}> Pricing </span>
               </NavLink>
+              <NavLink to="/ContactUs" style={({ isActive }) => ({ color: isActive ? "#fff" : "#EE9800" })}>
+  <span id={toggle ? "Movies" : "MoviesLight"}> Contact us </span>
+  </NavLink>
               {isLoggedIn ? (
                 <span
                   onClick={() => {
@@ -143,9 +146,7 @@ function NavBar() {
 })}>
   <span style={{ display: isLoggedIn ? "none" : "block" }} id={toggle ? "Movies" : "MoviesLight"}>Sign up</span>
 </NavLink>
-<NavLink to="/ContactUs" style={({ isActive }) => ({ color: isActive ? "#fff" : "#EE9800" })}>
-  <span id={toggle ? "Movies" : "MoviesLight"}> Contact us </span>
-  </NavLink>
+
                 </Fragment>
               )}
             </div>

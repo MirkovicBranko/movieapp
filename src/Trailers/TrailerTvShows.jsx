@@ -20,13 +20,18 @@ function TrailerTvShows({TvShowsTitle, toggle}) {
   }, [videoURL]);
   return (
     <Fragment>
-      <div className="Container"></div>
-      <div className="player">
-      <h1 id={toggle ? 'TrailerMovie-name-dark' :'TrailerMovie-name-light' }>{TvShowsTitle}</h1>
-        <ReactPlayer url={videoURL}controls={true}width={"1000px"}height={"700px"}muted={false}
-        />
-      </div>
-    </Fragment>
+    <div className="Container"></div>
+    <div className="player">
+      <h1 id={toggle ? 'TrailerMovie-name-dark' : 'TrailerMovie-name-light'}>{TvShowsTitle}</h1>
+      {videoURL ? (
+        <ReactPlayer url={videoURL} controls={true} width={"1000px"} height={"700px"} muted={false} />
+      ) : (
+        <div>
+        <p className="nA">Trailer unavailable.</p>
+        </div>
+      )}
+    </div>
+  </Fragment>
   );
 }
 
