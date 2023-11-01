@@ -15,9 +15,9 @@ function RegistrationForm() {
     e.preventDefault();
 
     const registrationData = {
-      email: email,
-      password: password,
-      username: username,
+      email: email.toLocaleLowerCase(),
+      password: password.toLocaleLowerCase(),
+      username: username.toLocaleLowerCase(),
     };
 
     try {

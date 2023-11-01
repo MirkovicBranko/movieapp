@@ -59,6 +59,8 @@ The VideoSite application offers the following key features:
 
 - **Theme Switching**: The application allows users to switch between light and dark themes.
 
+- **Contact Form**: The application uses contact form to let clients send suggestions or other bug reports.  
+
 ## Project Structure
 
 The project is organized as follows:
