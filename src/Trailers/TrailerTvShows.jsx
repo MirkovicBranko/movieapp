@@ -8,7 +8,7 @@ function TrailerTvShows({TvShowsTitle, toggle}) {
   const [video, setVideo] = useState("");
   const [videoURL, setVideoURL] = useState("");
 
-  function handleSearch() {
+  function handleSearch() { //searching for tvshows
     
     movieTrailer(video).then((res) => {
       setVideo(TvShowsTitle);

@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "../Styles/Signup.css"
-import FramerMotion from "./FramerMotion";
+
 
 function SignUp() {
 

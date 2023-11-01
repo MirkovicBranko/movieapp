@@ -8,18 +8,18 @@ import "../Styles/TrailerMovie.css";
 function TrailerTrending({ TrendTitle, toggle }) {
   const [videoURL, setVideoURL] = useState("");
 
-  function handleSearch() {
+  function handleSearch() { //searching movies and tvshows trending now
     if (TrendTitle) { 
       movieTrailer(TrendTitle)
         .then((res) => {
           if (res) {
             setVideoURL(res);
           } else {
-            console.log("Traženi trejler nije pronađen.");
+            console.log("Trailer not found.");
           }
         })
         .catch((error) => {
-          console.error("Greška prilikom pretrage trejlera filma:", error);
+          console.error("Error during search:", error);
         });
     }
   }
@@ -36,7 +36,7 @@ function TrailerTrending({ TrendTitle, toggle }) {
         {videoURL ? (
           <ReactPlayer url={videoURL} controls={true} width={"1000px"} height={"700px"} muted={false} />
         ) : (
-          <p className="nA">Trejler nije dostupan.</p>
+          <p className="nA">Trailer unavailable.</p>
         )}
       </div>
     </Fragment>

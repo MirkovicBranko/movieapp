@@ -7,7 +7,7 @@ import "../Styles/Videos.css";
 import TrailerTrending from "../Trailers/TrailerTrending";
 
 
-function Trends() {
+function Trends() { //getting trending tv shows and movies
   const { toggle } = useContext(Container);
   const Api = `https://api.themoviedb.org/3/`;
   const TrendsShown = `/trending/all/week`;

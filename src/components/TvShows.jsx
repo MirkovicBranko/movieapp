@@ -9,8 +9,8 @@ import TrailerTvShows from "../Trailers/TrailerTvShows";
 
 
 function TvShows() {
-  const { toggle, inputValue } = useContext(Container);
-  const [showData, setShowData] = useState([]);
+  const { toggle, inputValue } = useContext(Container); //this is for toggle and for search bar inputvalue
+  const [showData, setShowData] = useState([]); //results from api
   const input = inputValue;
   const [trailer, setTrailer] = useState(true);
   const [title, setTitle] = useState("");
@@ -18,7 +18,7 @@ function TvShows() {
   const Api = `https://api.themoviedb.org/3/${Shown}/tv`;
   const Images = `https://image.tmdb.org/t/p/w500`;
 
-  const TvShows = async () => {
+  const TvShows = async () => { //getting tv shows from Api
     const data = await axios.get(Api, {
       params: {
         api_key: `ff6727e4261b1e9a9fe2775707fc759f`,
@@ -32,7 +32,7 @@ function TvShows() {
     TvShows();
   }, [input]);
 
-  const TvShowTitle = (shows) => {
+  const TvShowTitle = (shows) => { //setting the name of tv show 
     setTitle(shows.name);
     setTrailer(!trailer);
   };
