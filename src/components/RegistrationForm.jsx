@@ -5,17 +5,19 @@ import "../Styles/toastify.css";
 import { useNavigate } from "react-router-dom";
 import "../Styles/Registration.css";
 
-
 function RegistrationForm() {
+  // Define state variables to store user input and status
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  // Function to handle user registration
   const handleRegister = async (e) => {
     e.preventDefault();
 
+    // Create an object containing registration data (email, password, and username)
     const registrationData = {
       email: email.toLowerCase().trim(),
       password: password,
@@ -23,6 +25,7 @@ function RegistrationForm() {
     };
 
     try {
+      // Send a POST request to the server for user registration
       const response = await fetch("http://localhost:5000/api/signup", {
         method: "POST",
         headers: {
@@ -32,6 +35,7 @@ function RegistrationForm() {
       });
 
       if (response.status === 200) {
+        // If registration is successful, show a success message and navigate to login
         const data = await response.json();
         toast.success(data.message, {
           position: "top-right",
@@ -42,6 +46,7 @@ function RegistrationForm() {
           },
         });
       } else {
+        // If registration is not successful, show an error message from the server
         const data = await response.json();
         toast.error(data.message, {
           position: "top-right",
@@ -50,8 +55,9 @@ function RegistrationForm() {
         });
       }
     } catch (error) {
-      console.error("Greška prilikom registracije:", error);
-      toast.error(error.message, { 
+      // Handle errors that may occur during the registration process
+      console.error("Error during registration:", error);
+      toast.error(error.message, {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -59,33 +65,37 @@ function RegistrationForm() {
     }
   };
 
+  // Function to check the user's login status using an HTTP request to the backend
   useEffect(() => {
-    // req on backend to check if user is logged in
     async function checkLoginStatus() {
-      if(isLoggedIn){
-      try {
-        const response = await fetch("http://localhost:5000/api/check-login", {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
+      if (!isLoggedIn) {
+        try {
+          const response = await fetch(
+            "http://localhost:5000/api/check-login",
+            {
+              method: "GET",
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+              },
+            }
+          );
 
-        if (response.status === 200) {
-          setIsLoggedIn(true);
+          if (response.status === 200) {
+            setIsLoggedIn(true);
+          }
+        } catch (error) {
+          console.error("Error during status application check:", error);
         }
-      } catch (error) {
-        console.error("Error during status application check:", error);
       }
     }
-  }
     checkLoginStatus();
   }, [isLoggedIn]);
 
   return (
     <div className="wrapperReg">
       <h2 className="registration">Registration</h2>
-      
+
+      {/* Display registration form only if the user is not logged in */}
       {!isLoggedIn && (
         <form onSubmit={handleRegister}>
           <input

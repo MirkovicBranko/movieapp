@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { AuthProvider } from "./components/AuthContext"; // Zamijenite sa pravilnim putem do AuthContext.js
+import { AuthProvider } from "./components/AuthContext";
 import RegistrationForm from "./components/RegistrationForm";
 import Login from "./components/Login";
 import NavBar from "./components/NavBar";

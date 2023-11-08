@@ -22,6 +22,7 @@ function Movie() {
         query: input,
       },
     });
+    // console.log(data.data.results);/
     const results = data.data.results;
     setMovieList(results);
   };
@@ -62,7 +63,11 @@ function Movie() {
               </Fragment>
             );
           })}
-          {trailer ? console.log() : <TrailerMovies moviesTitle={movieTitle} toggle={toggle} />}
+          {trailer ? (
+            console.log()
+          ) : (
+            <TrailerMovies moviesTitle={movieTitle} toggle={toggle} />
+          )}
           <AiOutlineClose //dodaje se dugme za exit
             id={trailer ? "Nothing" : "Exit1"}
             className={toggle ? "DatkTheme" : "LightTheme"}
