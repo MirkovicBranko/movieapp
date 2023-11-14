@@ -56,7 +56,7 @@ function NavBar() {
     navigate("/Movies"); // Navigate to the Movies page
   };
 
-  // Function to handle user registration
+  // Function to handle user registration and preventing refresh
   const handleRegister = async (e) => {
     e.preventDefault();
 
