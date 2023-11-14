@@ -9,6 +9,7 @@ function RegistrationForm() {
   // Define state variables to store user input and status
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [username, setUsername] = useState("");
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -16,6 +17,16 @@ function RegistrationForm() {
   // Function to handle user registration
   const handleRegister = async (e) => {
     e.preventDefault();
+
+    if (password !== confirmPassword) {
+      // Show toast if passwords dont match
+      toast.error("Passwords do not match", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+      });
+      return;
+    }
 
     // Create an object containing registration data (email, password, and username)
     const registrationData = {
@@ -118,6 +129,13 @@ function RegistrationForm() {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+          />
+          <input
+            className="input"
+            type="password"
+            placeholder="Confirm Password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
           <button type="submit" className="button">
             Register
