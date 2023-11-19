@@ -68,7 +68,7 @@ function Movie() {
           ) : (
             <TrailerMovies moviesTitle={movieTitle} toggle={toggle} />
           )}
-          <AiOutlineClose //dodaje se dugme za exit
+          <AiOutlineClose //adding button for exit
             id={trailer ? "Nothing" : "Exit1"}
             className={toggle ? "DatkTheme" : "LightTheme"}
             fontSize={55}
