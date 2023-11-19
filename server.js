@@ -10,10 +10,10 @@ const port = 5000;
 function generateToken(user) {
     const payload = {
         userId: user._id,
-        // Dodajte druge korisničke podatke prema potrebi
+
     };
-    const secret = "tajnaTajnaTajna"; // Vaša tajna
-    const options = { expiresIn: "24h" }; // Token ističe nakon 24 sata
+    const secret = "tajnaTajnaTajna"; // My secret token
+    const options = { expiresIn: "24h" }; // Token expires in 24 hours
 
     return jwt.sign(payload, secret, options);
 }
@@ -29,39 +29,50 @@ db.on("error", console.error.bind(console, "Connection error:"));
 db.once("open", () => {
     console.log("Connected to MongoDB database");
 });
-
-app.use(cors());
+const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+const usernameRegex = /^[a-zA-Z0-9._-]{3,}$/;
+app.use(cors({
+    origin: 'http://localhost:3000', //  Allowing requests only from this domain
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true, // Enables sending cookies between domains if needed
+}));
 app.use(express.json());
 
 app.post("/api/signup", async (req, res) => {
     const { username, password, email } = req.body;
 
-    // Provera da li korisnik sa istim korisničkim imenom već postoji
     const existingUser = await UserModel.findOne({ username });
     if (existingUser) {
-        return res.status(400).json({ message: "Korisničko ime već postoji" });
+        return res.status(400).json({ message: "Username allready exists" });
     }
 
-    // Kreiranje novog korisnika
+    if (!usernameRegex.test(username)) {
+        return res.status(400).json({ message: "Username is not in the right format" });
+    }
+
+    if (!passwordRegex.test(password)) {
+        return res.status(400).json({ message: "Password is not in the right format" });
+    }
+
+    //creating new user
     const newUser = new UserModel({ username, password, email });
 
     try {
         await newUser.save();
-        res.status(200).json({ message: "Registracija uspešna" });
+        res.status(200).json({ message: "Registration successfull" });
     } catch (error) {
-        res.status(500).json({ message: "Greška prilikom registracije" });
+        res.status(500).json({ message: "Error during registration" });
     }
 });
-
 app.post("/api/login", async (req, res) => {
     const { username, password } = req.body;
 
     const user = await UserModel.findOne({ username, password });
     if (user) {
         const token = generateToken(user);
-        res.status(200).json({ message: "Uspešna prijava", token });
+        res.status(200).json({ message: "Login successfull", token });
     } else {
-        res.status(401).json({ message: "Netačno korisničko ime ili lozinka" });
+        res.status(401).json({ message: "Wrong email or password" });
     }
 });
 
@@ -69,22 +80,26 @@ app.get("/api/check-login", (req, res) => {
     const token = req.headers.authorization;
 
     if (!token) {
-        return res.status(401).json({ message: "Niste prijavljeni" });
+        return res.status(401).json({ message: "You're not logged in!" });
     }
 
     jwt.verify(token, "tajnaTajnaTajna", (err, decoded) => {
         if (err) {
-            return res.status(401).json({ message: "Niste prijavljeni" });
+            return res.status(401).json({ message: "You're not logged in!" });
         }
 
-        res.status(200).json({ message: "Prijavljeni ste" });
+        res.status(200).json({ message: "You're logged in!" });
     });
+});
+app.post("/api/send-message", (req, res) => {
+    const { name, email, message } = req.body;
+    res.status(200).json({ message: "Message sent" });
 });
 
 app.get("/", (req, res) => {
-    res.send("Dobrodošli na moj server!");
+    res.send("Welcome to my server!");
 });
 
 app.listen(port, () => {
-    console.log(`Server radi na portu ${port}`);
+    console.log(`Server works on port: ${port}`);
 });
