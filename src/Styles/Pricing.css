@@ -31,6 +31,7 @@
     background-color: #000d13;
     margin-right: 20px;
     border-radius: 16px;
+    
 }
 
 .light-Theme1,
@@ -134,14 +135,17 @@ button:hover {
 
 #button1 {
     margin-top: 98px;
+    margin-left: 80px;
 }
 
 #button2 {
     margin-top: 55px;
+    margin-left: 80px;
 }
 
 #button3 {
     margin-top: 12px;
+    margin-left: 80px;
 }
 
 #darktheme {

@@ -26,20 +26,53 @@ function TrailerMovies({ moviesTitle, toggle }) {
     handleSearch();
   }, [videoURL]);
 
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const getWidth = () => {
+    if (width >= 768) {
+      return toggle ? "1000px" : "1000px";
+    } else if (width >= 480) {
+      return toggle ? "500px" : "500px";
+    } else {
+      return toggle ? "180px" : "180px";
+    }
+  };
+
+  const getHeight = () => {
+    if (width >= 768) {
+      return toggle ? "400px" : "400px";
+    } else if (width >= 480) {
+      return toggle ? "300px" : "300px";
+    } else {
+      return toggle ? "700px" : "700px";
+    }
+  };
+
   return (
     <Fragment>
       <div className="container" />
       <div className="player">
-        {/* Displaying the title with dark or light style based on the 'toggle' prop */}
         <h1 id={toggle ? "TrailerMovie-name-dark" : "TrailerMovie-name-light"}>
           {moviesTitle}
         </h1>
-        {/* Rendering the ReactPlayer component with the found video URL */}
         <ReactPlayer
           url={videoURL}
           controls={true}
-          width={"1000px"}
-          height={"700px"}
+          className="react-player"
+          width={getWidth()}
+          height={getHeight()}
           muted={false}
         />
       </div>
