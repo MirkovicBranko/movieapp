@@ -29,13 +29,16 @@ db.on("error", console.error.bind(console, "Connection error:"));
 db.once("open", () => {
     console.log("Connected to MongoDB database");
 });
+
 const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 const usernameRegex = /^[a-zA-Z0-9._-]{3,}$/;
+
 app.use(cors({
-    origin: 'http://localhost:3000', //  Allowing requests only from this domain
+    origin: '*', //  Allowing requests only from this domain
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // Enables sending cookies between domains if needed
 }));
+
 app.use(express.json());
 
 app.post("/api/signup", async (req, res) => {
