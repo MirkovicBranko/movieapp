@@ -119,7 +119,6 @@
 button {
     width: 400px;
     height: 6vh;
-    margin-left: 80px;
     border: none;
     border-radius: 7px;
     background-color: #659664;
@@ -190,4 +189,143 @@ button:hover {
 .password {
     padding: 20px;
     color: #38bdab;
+}
+
+/* Default styles */
+
+
+/* Media query for phones (do 480px) */
+@media (max-width: 480px) {
+
+    .input-group{
+        display: flex;
+        flex-direction: column;
+    }
+    .background-Color-Main {
+        height: auto;
+        flex-direction: column;
+    }
+
+    .Pricing-container {
+        flex-direction: column;
+
+    }
+
+    .Pricing-option1,
+    .Pricing-option2,
+    .Pricing-option3,
+    .light-Theme1,
+    .light-Theme2,
+    .light-Theme3 {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+        height: 100%;
+    }
+
+    .Price {
+        flex-direction: column;
+    }
+
+    .Pricing-option1 h3,
+    .Pricing-option2 h3,
+    .Pricing-option3 h3,
+    .light-Theme1 h3,
+    .light-Theme2 h3,
+    .light-Theme3 h3,
+    .Pricing-option1 h2,
+    .Pricing-option2 h2,
+    .Pricing-option3 h2,
+    .light-Theme1 h2,
+    .light-Theme2 h2,
+    .light-Theme3 h2 {
+        font-size: 2rem;
+    }
+
+    .Pricing-option1 span,
+    .Pricing-option2 span,
+    .Pricing-option3 span,
+    .light-Theme1 span,
+    .light-Theme2 span,
+    .light-Theme3 span {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+    button {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    #button1,
+    #button2,
+    #button3 {
+        margin-top: 20px;
+    }
+
+    #darktheme {
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .Pricing-yearly-darktheme {
+        margin-left: 125px;
+        margin-right: 0;
+    }
+}
+
+/* Media query for tablets (481px - 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+    .input-group{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    element.style {
+        color: green;
+        margin-left: 180px;
+    }
+    .background-Color-Main{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 50%;
+
+    }
+    .Pricing-container {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+       
+    }
+    span{
+        font-size: 1rem;
+    }
+    #button1 {
+        margin-top: 0px;
+    }
+    .Pricing-option1 span,
+    .Pricing-option2 span,
+    .Pricing-option3 span {
+        display: flex;
+        font-size: 0.8rem;
+        margin-left: 80px;
+        font-weight: 300px;
+}
+    .Pricing-option1 h2,
+    .Pricing-option2 h2,
+    .Pricing-option3 h2 {
+        font-size: 2.3rem !important;
+    }
+    .Pricing-option1,
+    .Pricing-option2,
+    .Pricing-option3,
+    .light-Theme1,
+    .light-Theme2,
+    .light-Theme3 {
+        width: 80%; 
+        margin-bottom: 20px;
+        height: 80%;
+        margin-left: 80px;
+    }
 }

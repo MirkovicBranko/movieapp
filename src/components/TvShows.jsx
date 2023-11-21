@@ -34,8 +34,7 @@ function TvShows() {
     TvShows();
   }, [input]);
 
-  const TvShowTitle = (shows) => {
-    // Set the title of the selected TV show and control the trailer visibility
+  const TvShowTitle = async (shows) => {
     setTitle(shows.name);
     setTrailer(!trailer);
   };

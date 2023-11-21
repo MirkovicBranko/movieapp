@@ -3,15 +3,17 @@
     background-color: #4caf50;
     color: white;
   }
+  
   #error-toast {
     background-color: #f44336;
     color: white;
   }
+
   .Toastify__toast-body > div:last-child{
     width: 350px;
     height: 50x;
   }
-  
+
   .Toastify__toast {
     white-space: pre-line;
   }

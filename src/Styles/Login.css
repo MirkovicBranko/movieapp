@@ -31,23 +31,38 @@ form {
 }
 
 .login {
-    margin-right: 80px;
     color: blue;
-
-
-
 }
 
-/* #forgot {
-    width: 150px;
-    font-size: 1em;
-    background-color: blue;
-    height: 35px;
-    text-align: start;
-} */
-/* 
-.span {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-} */
+@media (max-width: 480px) {
+    .wrapperLogin {
+        margin: 5rem auto; 
+    }
+
+    form {
+        margin-top: 15px;
+    }
+
+    .login {
+        margin-right: 0; 
+        margin-left: 0; 
+    }
+}
+
+@media (max-width: 768px) {
+    .wrapperLogin {
+        margin: 5rem auto; 
+    }
+
+    form {
+        margin-top: 15px;
+    }
+
+    .login {
+        margin-right: 0; 
+        margin-left: 0; 
+    }
+    #search{
+        margin-left: 290px;
+    }
+}

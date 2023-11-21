@@ -36,7 +36,6 @@ form {
 .input {
     height: 40px;
     width: 100%;
-
 }
 
 .button {
@@ -54,40 +53,30 @@ form {
 @media (max-width: 768px) {
     .wrapperReg {
         margin: 10rem auto;
-
     }
-
     form {
         gap: 1rem;
     }
-
-    .button {
-        max-width: 150px;
-    }
+   
 }
 
 
 @media (max-width: 480px) {
     .wrapperReg {
         margin: 5rem auto;
-
     }
-
     .registration {
         font-size: 1.5rem;
     }
-
     form {
         gap: 1rem;
     }
-
     .input {
         height: 35px;
     }
-
     .button {
-        max-width: 120px;
+        margin-left: 80px ;
         padding: 0.3rem;
-
+        
     }
 }

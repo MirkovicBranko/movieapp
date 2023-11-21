@@ -11,8 +11,6 @@ import Trends from "./components/Trends";
 import TvShows from "./components/TvShows";
 import ContactUs from "./components/ContactUs";
 
-
-
 function App() {
   return (
     <div>
