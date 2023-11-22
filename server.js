@@ -70,7 +70,7 @@ app.post("/api/signup", async (req, res) => {
 app.post("/api/login", async (req, res) => {
     const { username, password } = req.body;
 
-    const user = await UserModel.findOne({ username, password });
+    const user = await UserModel.findOne({ username });
     if (user) {
         const token = generateToken(user);
         res.status(200).json({ message: "Login successfull", token });
